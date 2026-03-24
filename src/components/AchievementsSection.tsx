@@ -31,18 +31,24 @@ const achievements = [
 ];
 
 const certificates = [
-  { name: "Industrial Training in ML", org: "Bharat Skillz", date: "Aug 2025", iconBg: "bg-violet/10", iconColor: "text-violet", linkColor: "text-violet hover:bg-violet/10" },
-  { name: "Cloud Computing", org: "NPTEL", date: "Apr 2025", iconBg: "bg-cyan/10", iconColor: "text-cyan", linkColor: "text-cyan hover:bg-cyan/10" },
-  { name: "Java Programming", org: "Neo Platform", date: "May 2024", iconBg: "bg-pink/10", iconColor: "text-pink", linkColor: "text-pink hover:bg-pink/10" },
-  { name: "HTML & CSS", org: "freeCodeCamp", date: "Oct 2023", iconBg: "bg-orange/10", iconColor: "text-orange", linkColor: "text-orange hover:bg-orange/10", link: "https://www.freecodecamp.org/certification/" },
+  { name: "Industrial Training in ML", org: "Bharat Skillz", date: "Aug 2025", color: "orange", link: "#" },
+  { name: "Cloud Computing", org: "NPTEL", date: "Apr 2025", color: "cyan", link: "#" },
+  { name: "Java Programming", org: "Neo Platform", date: "May 2024", color: "pink", link: "#" },
+  { name: "HTML & CSS", org: "freeCodeCamp", date: "Oct 2023", color: "lime", link: "https://www.freecodecamp.org/certification/" },
 ];
+
+const certColorMap: Record<string, { iconBg: string; iconText: string; linkColor: string }> = {
+  orange: { iconBg: "bg-orange/10", iconText: "text-orange", linkColor: "text-orange hover:bg-orange/10" },
+  cyan: { iconBg: "bg-cyan/10", iconText: "text-cyan", linkColor: "text-cyan hover:bg-cyan/10" },
+  pink: { iconBg: "bg-pink/10", iconText: "text-pink", linkColor: "text-pink hover:bg-pink/10" },
+  lime: { iconBg: "bg-lime/10", iconText: "text-lime", linkColor: "text-lime hover:bg-lime/10" },
+};
 
 const AchievementsSection = () => {
   return (
     <section id="achievements" className="section-padding relative overflow-hidden">
-      <div className="absolute inset-0 decorative-dots opacity-20" />
+      <div className="absolute inset-0 decorative-grid opacity-20" />
       <div className="absolute top-1/3 right-0 w-96 h-96 rounded-full bg-orange/5 blur-[120px]" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-pink/5 blur-[100px]" />
 
       <div className="max-w-6xl mx-auto relative">
         <motion.div
@@ -55,6 +61,7 @@ const AchievementsSection = () => {
             Recognition
           </span>
           <h2 className="text-4xl md:text-6xl font-display font-black text-gradient-warm">Achievements</h2>
+          <div className="w-16 h-1 bg-gradient-warm mx-auto mt-4 rounded-full" />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20">
@@ -100,32 +107,35 @@ const AchievementsSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {certificates.map((cert, i) => (
-            <motion.div
-              key={cert.name}
-              initial={{ opacity: 0, x: i % 2 === 0 ? -10 : 10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="glass-vibrant rounded-xl p-5 flex items-center gap-4 group transition-all duration-300"
-            >
-              <div className={`w-10 h-10 rounded-lg ${cert.iconBg} flex items-center justify-center shrink-0`}>
-                <Award className={`w-5 h-5 ${cert.iconColor}`} />
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="font-display font-semibold text-sm truncate">{cert.name}</p>
-                <p className="text-xs text-muted-foreground">{cert.org} · {cert.date}</p>
-              </div>
-              <a
-                href={cert.link || "#"}
-                target={cert.link ? "_blank" : undefined}
-                rel="noopener noreferrer"
-                className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-border text-xs font-semibold ${cert.linkColor} transition-all shrink-0`}
+          {certificates.map((cert, i) => {
+            const c = certColorMap[cert.color];
+            return (
+              <motion.div
+                key={cert.name}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -10 : 10 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="glass-vibrant rounded-xl p-5 flex items-center gap-4 group transition-all duration-300"
               >
-                View <ExternalLink className="w-3 h-3" />
-              </a>
-            </motion.div>
-          ))}
+                <div className={`w-10 h-10 rounded-lg ${c.iconBg} flex items-center justify-center shrink-0`}>
+                  <Award className={`w-5 h-5 ${c.iconText}`} />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <p className="font-display font-semibold text-sm truncate">{cert.name}</p>
+                  <p className="text-xs text-muted-foreground">{cert.org} · {cert.date}</p>
+                </div>
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-border text-xs font-semibold ${c.linkColor} transition-all shrink-0`}
+                >
+                  View Certificate <ExternalLink className="w-3 h-3" />
+                </a>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

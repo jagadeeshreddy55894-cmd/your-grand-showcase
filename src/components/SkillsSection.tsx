@@ -1,44 +1,32 @@
 import { motion } from "framer-motion";
 
-const skillCategories = [
-  {
-    title: "Languages",
-    emoji: "💻",
-    skills: ["C", "C++", "Java", "Python"],
-    gradient: "from-pink to-orange",
-    glow: "group-hover:glow-pink",
-  },
-  {
-    title: "ML / AI Frameworks",
-    emoji: "🧠",
-    skills: ["TensorFlow", "Scikit-learn", "XGBoost", "NumPy", "Pandas"],
-    gradient: "from-violet to-cyan",
-    glow: "group-hover:glow-violet",
-  },
-  {
-    title: "Web Technologies",
-    emoji: "🌐",
-    skills: ["HTML", "CSS"],
-    gradient: "from-cyan to-lime",
-    glow: "group-hover:glow-cyan",
-  },
-  {
-    title: "Tools & Platforms",
-    emoji: "⚡",
-    skills: ["VS Code", "Google Colab", "IntelliJ IDEA"],
-    gradient: "from-orange to-pink",
-    glow: "group-hover:glow-orange",
-  },
+const techIcons = [
+  "C", "C++", "Java", "Python", "HTML", "CSS",
+  "TensorFlow", "Scikit-learn", "XGBoost", "NumPy", "Pandas",
+  "VS Code", "Google Colab", "IntelliJ IDEA",
 ];
 
-const softSkills = ["Problem-Solving", "Team Player", "Adaptability"];
+const skillPills = [
+  { name: "Python", emoji: "🐍", color: "border-cyan/30 hover:border-cyan/60 hover:bg-cyan/10" },
+  { name: "Java", emoji: "☕", color: "border-orange/30 hover:border-orange/60 hover:bg-orange/10" },
+  { name: "C / C++", emoji: "⚡", color: "border-violet/30 hover:border-violet/60 hover:bg-violet/10" },
+  { name: "TensorFlow", emoji: "🧠", color: "border-orange/30 hover:border-orange/60 hover:bg-orange/10" },
+  { name: "Scikit-learn", emoji: "📊", color: "border-cyan/30 hover:border-cyan/60 hover:bg-cyan/10" },
+  { name: "XGBoost", emoji: "🚀", color: "border-pink/30 hover:border-pink/60 hover:bg-pink/10" },
+  { name: "NumPy", emoji: "🔢", color: "border-violet/30 hover:border-violet/60 hover:bg-violet/10" },
+  { name: "Pandas", emoji: "🐼", color: "border-lime/30 hover:border-lime/60 hover:bg-lime/10" },
+  { name: "HTML / CSS", emoji: "🌐", color: "border-orange/30 hover:border-orange/60 hover:bg-orange/10" },
+  { name: "VS Code", emoji: "💻", color: "border-cyan/30 hover:border-cyan/60 hover:bg-cyan/10" },
+  { name: "Google Colab", emoji: "☁️", color: "border-amber/30 hover:border-amber/60 hover:bg-amber/10" },
+  { name: "IntelliJ IDEA", emoji: "🔧", color: "border-pink/30 hover:border-pink/60 hover:bg-pink/10" },
+];
 
 const SkillsSection = () => {
   return (
     <section id="skills" className="section-padding relative overflow-hidden">
       {/* Decorative */}
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-violet/5 blur-[120px]" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-cyan/5 blur-[100px]" />
+      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-orange/5 blur-[120px]" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-violet/5 blur-[100px]" />
 
       <div className="max-w-6xl mx-auto relative">
         <motion.div
@@ -47,55 +35,45 @@ const SkillsSection = () => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-violet/10 text-violet font-mono text-xs tracking-[0.2em] uppercase mb-4">
-            Expertise
+          <span className="inline-block px-4 py-1.5 rounded-full bg-orange/10 text-orange font-mono text-xs tracking-[0.2em] uppercase mb-4">
+            Technical Stack
           </span>
-          <h2 className="text-4xl md:text-6xl font-display font-black text-gradient-cool">Skills & Tools</h2>
+          <h2 className="text-4xl md:text-6xl font-display font-black text-gradient-gold">Skills & Tools</h2>
+          <div className="w-16 h-1 bg-gradient-gold mx-auto mt-4 rounded-full" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {skillCategories.map((category, i) => (
+        {/* Marquee scrolling icons */}
+        <div className="relative mb-16 overflow-hidden py-4">
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10" />
+          <div className="marquee-track">
+            {[...techIcons, ...techIcons].map((icon, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-center px-6 py-3 mx-2 rounded-full glass-card text-muted-foreground font-mono text-sm whitespace-nowrap hover:text-foreground hover:border-orange/40 transition-all"
+              >
+                {icon}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Skill pills grid */}
+        <div className="flex flex-wrap justify-center gap-3">
+          {skillPills.map((skill, i) => (
             <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={skill.name}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className={`group glass-vibrant rounded-2xl p-6 hover:border-violet/30 transition-all duration-500 ${category.glow}`}
+              transition={{ delay: i * 0.04 }}
+              className={`flex items-center gap-2 px-5 py-3 rounded-full border ${skill.color} transition-all duration-300 cursor-default`}
             >
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-2xl">{category.emoji}</span>
-                <div className={`h-0.5 flex-1 bg-gradient-to-r ${category.gradient} opacity-30 rounded-full`} />
-                <h3 className="font-display font-bold text-sm uppercase tracking-wider text-muted-foreground">{category.title}</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-4 py-2 rounded-full bg-secondary/80 text-sm text-foreground font-medium hover:bg-secondary transition-colors border border-border/50"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+              <span className="text-lg">{skill.emoji}</span>
+              <span className="font-medium text-sm">{skill.name}</span>
             </motion.div>
           ))}
         </div>
-
-        {/* Soft Skills */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-3"
-        >
-          <span className="text-muted-foreground text-sm font-mono mr-2">Soft Skills →</span>
-          {softSkills.map((s) => (
-            <span key={s} className="px-4 py-2 rounded-full border border-pink/20 text-pink text-sm font-medium hover:bg-pink/10 transition-colors">
-              {s}
-            </span>
-          ))}
-        </motion.div>
       </div>
     </section>
   );

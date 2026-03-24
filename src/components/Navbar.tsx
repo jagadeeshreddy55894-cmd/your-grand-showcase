@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navItems = [
   { label: "Skills", href: "#skills" },
@@ -29,12 +29,9 @@ const Navbar = () => {
         scrolled ? "glass py-3" : "py-5 bg-transparent"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-gradient-rainbow flex items-center justify-center">
-            <Sparkles className="w-4 h-4 text-background" />
-          </div>
-          <span className="font-display font-bold text-lg text-gradient-rainbow">JVC</span>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <a href="#" className="font-display font-bold text-xl text-orange italic">
+          John Victor
         </a>
 
         <div className="hidden md:flex items-center gap-1">
@@ -49,7 +46,7 @@ const Navbar = () => {
           ))}
           <a
             href="mailto:johnvictorchavala95@gmail.com"
-            className="ml-3 px-5 py-2 text-sm font-semibold rounded-full bg-gradient-rainbow text-background hover:opacity-90 transition-opacity"
+            className="ml-3 px-5 py-2 text-sm font-semibold rounded-full bg-gradient-gold text-background hover:opacity-90 transition-opacity"
           >
             Hire Me ✨
           </a>
@@ -85,7 +82,7 @@ const Navbar = () => {
               ))}
               <a
                 href="mailto:johnvictorchavala95@gmail.com"
-                className="mt-2 px-5 py-2.5 text-sm font-semibold rounded-full bg-gradient-rainbow text-background text-center"
+                className="mt-2 px-5 py-2.5 text-sm font-semibold rounded-full bg-gradient-gold text-background text-center"
               >
                 Hire Me ✨
               </a>
