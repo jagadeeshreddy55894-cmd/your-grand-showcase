@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, MapPin, Calendar } from "lucide-react";
 
 const education = [
   {
@@ -8,6 +8,9 @@ const education = [
     degree: "B.Tech — Computer Science & Engineering",
     detail: "CGPA: 7.1",
     period: "Aug 2023 — Present",
+    color: "violet",
+    dotColor: "bg-violet",
+    borderColor: "border-l-violet",
   },
   {
     school: "Sri Chaitanya Junior College",
@@ -15,6 +18,9 @@ const education = [
     degree: "Intermediate",
     detail: "92%",
     period: "Jul 2021 — Apr 2023",
+    color: "cyan",
+    dotColor: "bg-cyan",
+    borderColor: "border-l-cyan",
   },
   {
     school: "Sri Chaitanya Techno School",
@@ -22,60 +28,60 @@ const education = [
     degree: "Matriculation",
     detail: "99%",
     period: "Jul 2020 — Mar 2021",
+    color: "pink",
+    dotColor: "bg-pink",
+    borderColor: "border-l-pink",
   },
 ];
 
 const EducationSection = () => {
   return (
-    <section id="education" className="section-padding">
-      <div className="max-w-6xl mx-auto">
+    <section id="education" className="section-padding relative overflow-hidden">
+      <div className="absolute top-0 left-1/2 w-80 h-80 rounded-full bg-cyan/5 blur-[100px]" />
+
+      <div className="max-w-6xl mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-16 text-center"
         >
-          <p className="font-mono text-primary text-sm tracking-[0.2em] uppercase mb-3">Background</p>
-          <h2 className="text-4xl md:text-5xl font-bold">Education</h2>
+          <span className="inline-block px-4 py-1.5 rounded-full bg-cyan/10 text-cyan font-mono text-xs tracking-[0.2em] uppercase mb-4">
+            Background
+          </span>
+          <h2 className="text-4xl md:text-6xl font-display font-black text-gradient-lime">Education</h2>
         </motion.div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-border hidden md:block" />
-
-          <div className="space-y-8">
-            {education.map((edu, i) => (
-              <motion.div
-                key={edu.school}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
-                className="relative md:pl-16"
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-4 top-3 w-5 h-5 rounded-full bg-background border-2 border-primary hidden md:flex items-center justify-center">
-                  <div className="w-2 h-2 rounded-full bg-primary" />
-                </div>
-
-                <div className="glass rounded-xl p-6">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
-                    <div className="flex items-center gap-3">
-                      <GraduationCap className="w-5 h-5 text-primary shrink-0 md:hidden" />
-                      <h3 className="font-semibold text-lg">{edu.school}</h3>
-                    </div>
-                    <span className="font-mono text-xs text-muted-foreground whitespace-nowrap">{edu.period}</span>
-                  </div>
-                  <p className="text-muted-foreground text-sm mb-1">{edu.location}</p>
-                  <div className="flex items-center gap-3 mt-3">
-                    <span className="text-foreground font-medium">{edu.degree}</span>
-                    <span className="px-2 py-0.5 rounded bg-primary/10 text-primary font-mono text-sm font-semibold">{edu.detail}</span>
+        <div className="space-y-6">
+          {education.map((edu, i) => (
+            <motion.div
+              key={edu.school}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.15 }}
+              className={`glass-vibrant rounded-2xl p-6 border-l-4 ${edu.borderColor}`}
+            >
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-3">
+                <div>
+                  <h3 className="font-display font-bold text-lg">{edu.school}</h3>
+                  <div className="flex items-center gap-2 mt-1 text-muted-foreground text-sm">
+                    <MapPin className="w-3.5 h-3.5" />
+                    <span>{edu.location}</span>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+                <div className="flex items-center gap-2 text-muted-foreground text-xs font-mono whitespace-nowrap">
+                  <Calendar className="w-3.5 h-3.5" />
+                  {edu.period}
+                </div>
+              </div>
+              <div className="flex items-center gap-3 mt-4">
+                <GraduationCap className={`w-5 h-5 text-${edu.color} shrink-0`} />
+                <span className="text-foreground font-medium">{edu.degree}</span>
+                <span className={`px-3 py-1 rounded-full bg-${edu.color}/10 text-${edu.color} font-mono text-sm font-bold`}>{edu.detail}</span>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

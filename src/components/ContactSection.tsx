@@ -1,28 +1,36 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Github, Linkedin, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, Github, Linkedin, ArrowUpRight, Heart, Sparkles } from "lucide-react";
 
 const contactLinks = [
-  { icon: Mail, label: "Email", value: "johnvictorchavala95@gmail.com", href: "mailto:johnvictorchavala95@gmail.com" },
-  { icon: Phone, label: "Phone", value: "+91 8309240212", href: "tel:+918309240212" },
-  { icon: Github, label: "GitHub", value: "johnvictorchavala", href: "https://github.com/johnvictorchavala/chinnu" },
-  { icon: Linkedin, label: "LinkedIn", value: "john-victor-chavala", href: "https://www.linkedin.com/in/john-victor-chavala/" },
+  { icon: Mail, label: "Email", value: "johnvictorchavala95@gmail.com", href: "mailto:johnvictorchavala95@gmail.com", color: "pink", glow: "hover:glow-pink", bg: "bg-pink/10", text: "text-pink" },
+  { icon: Phone, label: "Phone", value: "+91 8309240212", href: "tel:+918309240212", color: "orange", glow: "hover:glow-orange", bg: "bg-orange/10", text: "text-orange" },
+  { icon: Github, label: "GitHub", value: "johnvictorchavala", href: "https://github.com/johnvictorchavala/chinnu", color: "violet", glow: "hover:glow-violet", bg: "bg-violet/10", text: "text-violet" },
+  { icon: Linkedin, label: "LinkedIn", value: "john-victor-chavala", href: "https://www.linkedin.com/in/john-victor-chavala/", color: "cyan", glow: "hover:glow-cyan", bg: "bg-cyan/10", text: "text-cyan" },
 ];
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="section-padding">
-      <div className="max-w-4xl mx-auto text-center">
+    <section id="contact" className="section-padding relative overflow-hidden">
+      {/* Decorative blobs */}
+      <div className="absolute top-0 left-1/4 w-72 h-72 rounded-full bg-violet/8 blur-[100px]" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-pink/5 blur-[120px]" />
+
+      <div className="max-w-4xl mx-auto text-center relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <p className="font-mono text-primary text-sm tracking-[0.2em] uppercase mb-3">Connect</p>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">Let's Build Something</h2>
+          <span className="inline-block px-4 py-1.5 rounded-full bg-pink/10 text-pink font-mono text-xs tracking-[0.2em] uppercase mb-4">
+            Say Hello 👋
+          </span>
+          <h2 className="text-4xl md:text-6xl font-display font-black mb-4">
+            <span className="text-gradient-rainbow">Let's Build</span>{" "}
+            <span className="text-foreground">Something</span>
+          </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Open to collaborations, internships, and ML/AI projects. Reach out anytime.
+            Open to collaborations, internships, and ML/AI projects. Let's connect! 🚀
           </p>
         </motion.div>
 
@@ -36,17 +44,17 @@ const ContactSection = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="glass rounded-xl p-5 flex items-center gap-4 group hover:glow-border transition-all duration-500"
+              transition={{ delay: i * 0.1 }}
+              className={`glass-vibrant rounded-2xl p-5 flex items-center gap-4 group transition-all duration-500 ${link.glow}`}
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                <link.icon className="w-5 h-5 text-primary" />
+              <div className={`w-12 h-12 rounded-xl ${link.bg} flex items-center justify-center shrink-0`}>
+                <link.icon className={`w-5 h-5 ${link.text}`} />
               </div>
               <div className="text-left min-w-0 flex-1">
-                <p className="text-xs font-mono text-muted-foreground uppercase tracking-wider">{link.label}</p>
-                <p className="font-medium text-sm truncate group-hover:text-primary transition-colors">{link.value}</p>
+                <p className={`text-xs font-mono ${link.text} uppercase tracking-wider`}>{link.label}</p>
+                <p className="font-medium text-sm truncate">{link.value}</p>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+              <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
             </motion.a>
           ))}
         </div>
@@ -54,8 +62,9 @@ const ContactSection = () => {
 
       {/* Footer */}
       <div className="mt-24 pt-8 border-t border-border text-center">
-        <p className="text-sm text-muted-foreground font-mono">
-          © 2025 John Victor Chavala. Crafted with purpose.
+        <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
+          Made with <Heart className="w-4 h-4 text-pink fill-pink" /> by John Victor Chavala
+          <Sparkles className="w-4 h-4 text-violet" />
         </p>
       </div>
     </section>
