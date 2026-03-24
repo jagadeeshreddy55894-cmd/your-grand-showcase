@@ -1,93 +1,132 @@
 import { motion } from "framer-motion";
-import { Trophy, Heart, Code2, Award } from "lucide-react";
+import { Trophy, Heart, Code2, Award, ArrowUpRight, ExternalLink } from "lucide-react";
 
 const achievements = [
   {
     icon: Trophy,
-    title: "Hackathon Top 5",
+    title: "Hackathon Top 5 🏆",
     description: "4th position in a 32-hour institutional hackathon, building a creative and innovative website as a team.",
+    bg: "bg-orange/10",
+    textColor: "text-orange",
+    glowClass: "hover:glow-orange",
   },
   {
     icon: Heart,
-    title: "50+ Volunteer Hours",
-    description: "Dedicated time supporting elders at an old age home in collaboration with an NGO, providing companionship and daily assistance.",
+    title: "50+ Volunteer Hours 💛",
+    description: "Dedicated time supporting elders at an old age home in collaboration with an NGO, providing companionship.",
+    bg: "bg-pink/10",
+    textColor: "text-pink",
+    glowClass: "hover:glow-pink",
   },
   {
     icon: Code2,
-    title: "50+ LeetCode Problems",
+    title: "50+ LeetCode 🔥",
     description: "Solved DSA problems on LeetCode, strengthening problem-solving and logical thinking skills.",
+    bg: "bg-lime/10",
+    textColor: "text-lime",
+    glowClass: "hover:glow-cyan",
+    link: "https://leetcode.com/",
+    linkText: "View Profile",
   },
 ];
 
 const certificates = [
-  { name: "Industrial Training in ML", org: "Bharat Skillz", date: "Aug 2025" },
-  { name: "Cloud Computing", org: "NPTEL", date: "Apr 2025" },
-  { name: "Java Programming", org: "Neo Platform", date: "May 2024" },
-  { name: "HTML & CSS", org: "freeCodeCamp", date: "Oct 2023" },
+  { name: "Industrial Training in ML", org: "Bharat Skillz", date: "Aug 2025", iconBg: "bg-violet/10", iconColor: "text-violet", linkColor: "text-violet hover:bg-violet/10" },
+  { name: "Cloud Computing", org: "NPTEL", date: "Apr 2025", iconBg: "bg-cyan/10", iconColor: "text-cyan", linkColor: "text-cyan hover:bg-cyan/10" },
+  { name: "Java Programming", org: "Neo Platform", date: "May 2024", iconBg: "bg-pink/10", iconColor: "text-pink", linkColor: "text-pink hover:bg-pink/10" },
+  { name: "HTML & CSS", org: "freeCodeCamp", date: "Oct 2023", iconBg: "bg-orange/10", iconColor: "text-orange", linkColor: "text-orange hover:bg-orange/10", link: "https://www.freecodecamp.org/certification/" },
 ];
 
 const AchievementsSection = () => {
   return (
-    <section id="achievements" className="section-padding bg-muted/30">
-      <div className="max-w-6xl mx-auto">
+    <section id="achievements" className="section-padding relative overflow-hidden">
+      <div className="absolute inset-0 decorative-dots opacity-20" />
+      <div className="absolute top-1/3 right-0 w-96 h-96 rounded-full bg-orange/5 blur-[120px]" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-pink/5 blur-[100px]" />
+
+      <div className="max-w-6xl mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-16 text-center"
         >
-          <p className="font-mono text-primary text-sm tracking-[0.2em] uppercase mb-3">Recognition</p>
-          <h2 className="text-4xl md:text-5xl font-bold">Achievements & Certifications</h2>
+          <span className="inline-block px-4 py-1.5 rounded-full bg-orange/10 text-orange font-mono text-xs tracking-[0.2em] uppercase mb-4">
+            Recognition
+          </span>
+          <h2 className="text-4xl md:text-6xl font-display font-black text-gradient-warm">Achievements</h2>
         </motion.div>
 
-        {/* Achievements */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20">
           {achievements.map((item, i) => (
             <motion.div
               key={item.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass rounded-xl p-6 text-center hover:glow-border transition-all duration-500"
+              transition={{ delay: i * 0.1 }}
+              className={`glass-vibrant rounded-2xl p-6 text-center group transition-all duration-500 ${item.glowClass}`}
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <item.icon className="w-6 h-6 text-primary" />
+              <div className={`w-14 h-14 rounded-xl ${item.bg} flex items-center justify-center mx-auto mb-4`}>
+                <item.icon className={`w-7 h-7 ${item.textColor}`} />
               </div>
-              <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              <h3 className="font-display font-bold text-lg mb-2">{item.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">{item.description}</p>
+              {item.link && (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-1.5 text-sm font-semibold ${item.textColor} hover:underline`}
+                >
+                  {item.linkText} <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              )}
             </motion.div>
           ))}
         </div>
 
-        {/* Certificates */}
+        {/* Certifications */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          className="text-center mb-10"
         >
-          <h3 className="font-mono text-primary text-xs tracking-[0.15em] uppercase mb-6">Certifications</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {certificates.map((cert, i) => (
-              <motion.div
-                key={cert.name}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="flex items-center gap-4 glass rounded-lg p-4"
-              >
-                <Award className="w-5 h-5 text-primary shrink-0" />
-                <div className="min-w-0">
-                  <p className="font-medium text-sm truncate">{cert.name}</p>
-                  <p className="text-xs text-muted-foreground">{cert.org} · {cert.date}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+          <span className="inline-block px-4 py-1.5 rounded-full bg-violet/10 text-violet font-mono text-xs tracking-[0.2em] uppercase mb-4">
+            Verified
+          </span>
+          <h3 className="text-3xl md:text-4xl font-display font-black text-gradient-cool">Certifications</h3>
         </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {certificates.map((cert, i) => (
+            <motion.div
+              key={cert.name}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -10 : 10 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="glass-vibrant rounded-xl p-5 flex items-center gap-4 group transition-all duration-300"
+            >
+              <div className={`w-10 h-10 rounded-lg ${cert.iconBg} flex items-center justify-center shrink-0`}>
+                <Award className={`w-5 h-5 ${cert.iconColor}`} />
+              </div>
+              <div className="min-w-0 flex-1">
+                <p className="font-display font-semibold text-sm truncate">{cert.name}</p>
+                <p className="text-xs text-muted-foreground">{cert.org} · {cert.date}</p>
+              </div>
+              <a
+                href={cert.link || "#"}
+                target={cert.link ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-border text-xs font-semibold ${cert.linkColor} transition-all shrink-0`}
+              >
+                View <ExternalLink className="w-3 h-3" />
+              </a>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

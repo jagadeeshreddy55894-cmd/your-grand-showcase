@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 
 const navItems = [
   { label: "Skills", href: "#skills" },
@@ -25,39 +25,45 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass py-3" : "py-5"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled ? "glass py-3" : "py-5 bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="font-display font-bold text-lg text-primary">
-          JVC<span className="text-foreground">.</span>
+        <a href="#" className="flex items-center gap-2 group">
+          <div className="w-8 h-8 rounded-lg bg-gradient-rainbow flex items-center justify-center">
+            <Sparkles className="w-4 h-4 text-background" />
+          </div>
+          <span className="font-display font-bold text-lg text-gradient-rainbow">JVC</span>
         </a>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors font-mono tracking-wide"
+              className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground rounded-full hover:bg-secondary transition-all duration-300 font-medium"
             >
               {item.label}
             </a>
           ))}
+          <a
+            href="mailto:johnvictorchavala95@gmail.com"
+            className="ml-3 px-5 py-2 text-sm font-semibold rounded-full bg-gradient-rainbow text-background hover:opacity-90 transition-opacity"
+          >
+            Hire Me ✨
+          </a>
         </div>
 
-        {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-foreground"
+          className="md:hidden text-foreground p-2"
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -66,17 +72,23 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden glass border-t border-border overflow-hidden"
           >
-            <div className="px-6 py-4 flex flex-col gap-4">
+            <div className="px-6 py-4 flex flex-col gap-2">
               {navItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
                   onClick={() => setMobileOpen(false)}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors font-mono"
+                  className="px-4 py-2.5 text-sm text-muted-foreground hover:text-foreground rounded-lg hover:bg-secondary transition-all"
                 >
                   {item.label}
                 </a>
               ))}
+              <a
+                href="mailto:johnvictorchavala95@gmail.com"
+                className="mt-2 px-5 py-2.5 text-sm font-semibold rounded-full bg-gradient-rainbow text-background text-center"
+              >
+                Hire Me ✨
+              </a>
             </div>
           </motion.div>
         )}
