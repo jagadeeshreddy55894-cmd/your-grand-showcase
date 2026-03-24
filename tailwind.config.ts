@@ -3,6 +3,14 @@ import type { Config } from "tailwindcss";
 export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  safelist: [
+    "text-violet", "text-cyan", "text-pink", "text-orange", "text-lime",
+    "bg-violet/10", "bg-cyan/10", "bg-pink/10", "bg-orange/10", "bg-lime/10",
+    "border-l-violet", "border-l-cyan", "border-l-pink", "border-l-orange",
+    "border-violet/40", "border-cyan/40", "border-pink/40",
+    "hover:bg-violet/10", "hover:bg-cyan/10", "hover:bg-pink/10", "hover:bg-orange/10",
+    "hover:border-violet/30", "hover:border-cyan/30", "hover:border-pink/30",
+  ],
   prefix: "",
   theme: {
     container: {
