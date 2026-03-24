@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download, ChevronDown, Zap, Target, Brain, Users } from "lucide-react";
 
 const traits = [
-  { icon: Zap, title: "Fast Learner", subtitle: "Adapts quickly", color: "text-orange" },
+  { icon: Zap, title: "Fast Learner", subtitle: "Adapts quickly", color: "text-cyan" },
   { icon: Target, title: "Detail Oriented", subtitle: "Precision-driven", color: "text-pink" },
-  { icon: Brain, title: "Problem Solver", subtitle: "Elegant solutions", color: "text-cyan" },
-  { icon: Users, title: "Team Player", subtitle: "Collaborative", color: "text-amber" },
+  { icon: Brain, title: "Problem Solver", subtitle: "Elegant solutions", color: "text-violet" },
+  { icon: Users, title: "Team Player", subtitle: "Collaborative", color: "text-lime" },
 ];
 
 const HeroSection = () => {
@@ -26,9 +26,9 @@ const HeroSection = () => {
       </div>
 
       {/* Background blobs */}
-      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-orange/8 blur-[150px] animate-blob" />
-      <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-pink/6 blur-[120px] animate-blob-delay" />
-      <div className="absolute top-1/2 right-0 w-[300px] h-[300px] rounded-full bg-violet/6 blur-[100px] animate-blob-delay-2" />
+      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-violet/8 blur-[150px] animate-blob" />
+      <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full bg-cyan/6 blur-[120px] animate-blob-delay" />
+      <div className="absolute top-1/2 right-0 w-[300px] h-[300px] rounded-full bg-pink/6 blur-[100px] animate-blob-delay-2" />
 
       {/* Grid overlay */}
       <div className="absolute inset-0 decorative-grid opacity-40" />
@@ -51,7 +51,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-mono text-sm text-orange uppercase tracking-[0.25em] mb-4 font-semibold"
+              className="font-mono text-sm text-violet uppercase tracking-[0.25em] mb-4 font-semibold"
             >
               Machine Learning Engineer
             </motion.p>
@@ -77,7 +77,7 @@ const HeroSection = () => {
               <p className="text-muted-foreground text-lg leading-relaxed max-w-lg">
                 Building intelligent systems with <span className="text-cyan font-medium">Machine Learning</span> —
                 turning raw data into real-world impact through <span className="text-pink font-medium">predictive models</span> and{" "}
-                <span className="text-orange font-medium">smart automation</span>.
+                <span className="text-violet font-medium">smart automation</span>.
               </p>
             </motion.div>
 
@@ -123,15 +123,15 @@ const HeroSection = () => {
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-orange/40 text-orange font-bold text-sm hover:bg-orange/10 transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-violet/40 text-violet font-bold text-sm hover:bg-violet/10 transition-all"
               >
                 <Mail className="w-4 h-4" /> Contact Me
               </a>
               <a
-                href="https://github.com/johnvictorchavala/chinnu"
+                href="https://github.com/johnvictorchavala"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-11 h-11 rounded-full border border-border flex items-center justify-center hover:border-orange/40 hover:bg-orange/5 transition-all group"
+                className="w-11 h-11 rounded-full border border-border flex items-center justify-center hover:border-violet/40 hover:bg-violet/5 transition-all group"
               >
                 <Github className="w-5 h-5 text-muted-foreground group-hover:text-foreground transition-colors" />
               </a>
@@ -155,15 +155,15 @@ const HeroSection = () => {
           >
             <div className="relative w-80 h-80">
               {/* Rotating rings */}
-              <div className="absolute inset-0 rounded-full border-2 border-orange/30 animate-spin-slow" />
-              <div className="absolute inset-3 rounded-full border border-pink/20" style={{ animation: 'spin-slow 25s linear infinite reverse' }} />
-              <div className="absolute inset-6 rounded-full border border-cyan/15 animate-spin-slow" style={{ animationDuration: '30s' }} />
+              <div className="absolute inset-0 rounded-full border-2 border-violet/30 animate-spin-slow" />
+              <div className="absolute inset-3 rounded-full border border-cyan/20" style={{ animation: 'spin-slow 25s linear infinite reverse' }} />
+              <div className="absolute inset-6 rounded-full border border-pink/15 animate-spin-slow" style={{ animationDuration: '30s' }} />
 
               {/* Gradient ring */}
               <div
                 className="absolute inset-0 rounded-full animate-gradient-shift"
                 style={{
-                  background: 'conic-gradient(from 0deg, hsl(var(--orange)), hsl(var(--pink)), hsl(var(--violet)), hsl(var(--cyan)), hsl(var(--orange)))',
+                  background: 'conic-gradient(from 0deg, hsl(var(--violet)), hsl(var(--cyan)), hsl(var(--pink)), hsl(var(--lime)), hsl(var(--violet)))',
                   mask: 'radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px))',
                   WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 3px), black calc(100% - 3px))',
                 }}
@@ -175,7 +175,7 @@ const HeroSection = () => {
               </div>
 
               {/* Orbiting dots */}
-              <div className="absolute -top-1 left-1/2 w-3 h-3 rounded-full bg-orange animate-pulse-glow" />
+              <div className="absolute -top-1 left-1/2 w-3 h-3 rounded-full bg-violet animate-pulse-glow" />
               <div className="absolute bottom-4 -right-1 w-2 h-2 rounded-full bg-cyan animate-pulse" />
               <div className="absolute bottom-0 left-8 w-2.5 h-2.5 rounded-full bg-pink animate-pulse" style={{ animationDelay: '1s' }} />
             </div>
