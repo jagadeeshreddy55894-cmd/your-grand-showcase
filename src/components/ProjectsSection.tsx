@@ -8,8 +8,8 @@ const projects = [
     subtitle: "Unsupervised Clustering · Dec 2025",
     description: "Deep learning pipeline leveraging CNN embeddings, K-Means, DBSCAN, PCA, and t-SNE for emotion grouping without supervision.",
     tags: ["CNN", "K-Means", "DBSCAN", "PCA", "t-SNE"],
-    github: "https://github.com/johnvictorchavala/chinnu",
-    color: "orange",
+    github: "https://github.com/johnvictorchavala/Face-Expression-Detection-using-Clustering",
+    color: "violet",
   },
   {
     icon: MapPin,
@@ -17,7 +17,7 @@ const projects = [
     subtitle: "Geospatial Analysis · May 2025",
     description: "Automated system detecting riverbank erosion from aerial imagery using XGBoost, Random Forest, Gradient Boosting, SVR, Ridge, and Lasso.",
     tags: ["XGBoost", "Random Forest", "Geospatial", "SVR"],
-    github: "https://github.com/johnvictorchavala/chinnu",
+    github: "https://github.com/johnvictorchavala/Solution-to-Detect-and-Quantify-Riverbank-Erosion-Using-Aerial-Imagery",
     color: "cyan",
   },
   {
@@ -26,23 +26,23 @@ const projects = [
     subtitle: "Supervised Learning · Nov 2024",
     description: "Data-driven agricultural system achieving 92% accuracy using soil nutrients, temperature, humidity, and rainfall data.",
     tags: ["Scikit-Learn", "Random Forest", "SVM", "Pandas"],
-    github: "https://github.com/johnvictorchavala/chinnu",
+    github: "https://github.com/johnvictorchavala/Crop%20Recomdation%20system",
     color: "lime",
   },
 ];
 
-const colorMap: Record<string, { tagBg: string; iconBg: string; iconText: string; border: string; glow: string }> = {
-  orange: { tagBg: "bg-orange/10 text-orange", iconBg: "bg-orange/10", iconText: "text-orange", border: "hover:border-orange/40", glow: "hover:glow-orange" },
-  cyan: { tagBg: "bg-cyan/10 text-cyan", iconBg: "bg-cyan/10", iconText: "text-cyan", border: "hover:border-cyan/40", glow: "hover:glow-cyan" },
-  lime: { tagBg: "bg-lime/10 text-lime", iconBg: "bg-lime/10", iconText: "text-lime", border: "hover:border-lime/40", glow: "hover:glow-cyan" },
+const colorMap: Record<string, { tagBg: string; iconBg: string; iconText: string; border: string; glow: string; btnBorder: string }> = {
+  violet: { tagBg: "bg-violet/10 text-violet", iconBg: "bg-violet/10", iconText: "text-violet", border: "hover:border-violet/40", glow: "hover:glow-violet", btnBorder: "hover:border-violet/40 hover:bg-violet/5" },
+  cyan: { tagBg: "bg-cyan/10 text-cyan", iconBg: "bg-cyan/10", iconText: "text-cyan", border: "hover:border-cyan/40", glow: "hover:glow-cyan", btnBorder: "hover:border-cyan/40 hover:bg-cyan/5" },
+  lime: { tagBg: "bg-lime/10 text-lime", iconBg: "bg-lime/10", iconText: "text-lime", border: "hover:border-lime/40", glow: "hover:glow-lime", btnBorder: "hover:border-lime/40 hover:bg-lime/5" },
 };
 
 const ProjectsSection = () => {
   return (
     <section id="projects" className="section-padding relative overflow-hidden">
       <div className="absolute inset-0 decorative-dots opacity-15" />
-      <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-pink/5 blur-[120px]" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-orange/5 blur-[100px]" />
+      <div className="absolute top-1/2 left-0 w-96 h-96 rounded-full bg-violet/5 blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-cyan/5 blur-[100px]" />
 
       <div className="max-w-6xl mx-auto relative">
         <motion.div
@@ -51,11 +51,11 @@ const ProjectsSection = () => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-pink/10 text-pink font-mono text-xs tracking-[0.2em] uppercase mb-4">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-violet/10 text-violet font-mono text-xs tracking-[0.2em] uppercase mb-4">
             Portfolio
           </span>
-          <h2 className="text-4xl md:text-6xl font-display font-black text-gradient-warm">Featured Projects</h2>
-          <div className="w-16 h-1 bg-gradient-warm mx-auto mt-4 rounded-full" />
+          <h2 className="text-4xl md:text-6xl font-display font-black text-gradient-electric">Featured Projects</h2>
+          <div className="w-16 h-1 bg-gradient-gold mx-auto mt-4 rounded-full" />
         </motion.div>
 
         <div className="space-y-6">
@@ -87,7 +87,7 @@ const ProjectsSection = () => {
                           href={project.github}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-border text-sm font-semibold hover:border-orange/40 hover:bg-orange/5 transition-all duration-300 group/link"
+                          className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-border text-sm font-semibold ${c.btnBorder} transition-all duration-300 group/link`}
                         >
                           <Github className="w-3.5 h-3.5" /> View Project <ArrowUpRight className="w-3.5 h-3.5 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                         </a>

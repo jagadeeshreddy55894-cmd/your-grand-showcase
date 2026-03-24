@@ -6,54 +6,58 @@
 
 @layer base {
   :root {
-    --background: 20 10% 6%;
-    --foreground: 40 20% 92%;
+    --background: 230 25% 7%;
+    --foreground: 220 20% 93%;
 
-    --card: 20 10% 10%;
-    --card-foreground: 40 20% 92%;
+    --card: 230 20% 11%;
+    --card-foreground: 220 20% 93%;
 
-    --popover: 20 10% 10%;
-    --popover-foreground: 40 20% 92%;
+    --popover: 230 20% 11%;
+    --popover-foreground: 220 20% 93%;
 
-    --primary: 32 100% 50%;
-    --primary-foreground: 20 10% 6%;
+    --primary: 265 90% 60%;
+    --primary-foreground: 230 25% 7%;
 
-    --secondary: 20 10% 14%;
-    --secondary-foreground: 40 20% 92%;
+    --secondary: 230 18% 15%;
+    --secondary-foreground: 220 20% 93%;
 
-    --muted: 20 8% 13%;
-    --muted-foreground: 30 8% 50%;
+    --muted: 230 15% 14%;
+    --muted-foreground: 220 10% 48%;
 
-    --accent: 32 100% 50%;
-    --accent-foreground: 20 10% 6%;
+    --accent: 265 90% 60%;
+    --accent-foreground: 230 25% 7%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 8% 16%;
-    --input: 30 8% 16%;
-    --ring: 32 100% 50%;
+    --border: 230 12% 18%;
+    --input: 230 12% 18%;
+    --ring: 265 90% 60%;
 
     --radius: 1rem;
 
     /* Extended palette */
-    --pink: 330 90% 62%;
-    --orange: 32 100% 50%;
-    --cyan: 180 80% 50%;
-    --lime: 80 90% 55%;
-    --violet: 270 80% 65%;
-    --amber: 40 95% 55%;
-    --gold: 45 100% 50%;
+    --pink: 330 85% 60%;
+    --orange: 25 95% 55%;
+    --cyan: 190 90% 50%;
+    --lime: 145 80% 50%;
+    --violet: 265 90% 60%;
+    --amber: 38 95% 55%;
+    --gold: 45 100% 55%;
     --emerald: 160 84% 39%;
+    --rose: 350 90% 62%;
+    --sky: 200 95% 55%;
+    --indigo: 240 80% 62%;
+    --teal: 170 80% 45%;
 
-    --sidebar-background: 20 10% 8%;
-    --sidebar-foreground: 40 20% 92%;
-    --sidebar-primary: 32 100% 50%;
-    --sidebar-primary-foreground: 20 10% 6%;
-    --sidebar-accent: 20 10% 14%;
-    --sidebar-accent-foreground: 40 20% 92%;
-    --sidebar-border: 30 8% 16%;
-    --sidebar-ring: 32 100% 50%;
+    --sidebar-background: 230 20% 9%;
+    --sidebar-foreground: 220 20% 93%;
+    --sidebar-primary: 265 90% 60%;
+    --sidebar-primary-foreground: 230 25% 7%;
+    --sidebar-accent: 230 18% 15%;
+    --sidebar-accent-foreground: 220 20% 93%;
+    --sidebar-border: 230 12% 18%;
+    --sidebar-ring: 265 90% 60%;
   }
 }
 
@@ -74,12 +78,12 @@
 @layer utilities {
   .text-gradient-rainbow {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--pink)), hsl(var(--orange)), hsl(var(--amber)));
+    background-image: linear-gradient(135deg, hsl(var(--violet)), hsl(var(--pink)), hsl(var(--cyan)));
   }
 
   .text-gradient-warm {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--orange)), hsl(var(--pink)));
+    background-image: linear-gradient(135deg, hsl(var(--orange)), hsl(var(--rose)));
   }
 
   .text-gradient-cool {
@@ -89,24 +93,33 @@
 
   .text-gradient-lime {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--lime)), hsl(var(--cyan)));
+    background-image: linear-gradient(135deg, hsl(var(--lime)), hsl(var(--teal)));
   }
 
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--orange)), hsl(var(--pink)));
+    background-image: linear-gradient(135deg, hsl(var(--violet)), hsl(var(--cyan)), hsl(var(--pink)));
+  }
+
+  .text-gradient-electric {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--cyan)), hsl(var(--violet)), hsl(var(--pink)));
   }
 
   .bg-gradient-rainbow {
-    background-image: linear-gradient(135deg, hsl(var(--orange)), hsl(var(--pink)), hsl(var(--violet)));
+    background-image: linear-gradient(135deg, hsl(var(--violet)), hsl(var(--pink)), hsl(var(--cyan)));
   }
 
   .bg-gradient-warm {
-    background-image: linear-gradient(135deg, hsl(var(--orange)), hsl(var(--pink)));
+    background-image: linear-gradient(135deg, hsl(var(--orange)), hsl(var(--rose)));
   }
 
   .bg-gradient-gold {
-    background-image: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--orange)));
+    background-image: linear-gradient(135deg, hsl(var(--violet)), hsl(var(--cyan)));
+  }
+
+  .bg-gradient-electric {
+    background-image: linear-gradient(135deg, hsl(var(--cyan)), hsl(var(--violet)));
   }
 
   .glow-pink {
@@ -129,13 +142,17 @@
     box-shadow: 0 0 25px -4px hsl(var(--gold) / 0.5), 0 0 60px -8px hsl(var(--gold) / 0.2);
   }
 
+  .glow-lime {
+    box-shadow: 0 0 25px -4px hsl(var(--lime) / 0.5), 0 0 60px -8px hsl(var(--lime) / 0.2);
+  }
+
   .glass {
     @apply bg-card/60 backdrop-blur-2xl border border-border/50;
   }
 
   .glass-vibrant {
     @apply backdrop-blur-2xl border border-border/40;
-    background: linear-gradient(145deg, hsl(var(--orange) / 0.06), hsl(var(--card)), hsl(var(--pink) / 0.03));
+    background: linear-gradient(145deg, hsl(var(--violet) / 0.06), hsl(var(--card)), hsl(var(--cyan) / 0.03));
   }
 
   .glass-card {
@@ -148,14 +165,14 @@
   }
 
   .decorative-dots {
-    background-image: radial-gradient(hsl(var(--orange) / 0.12) 1px, transparent 1px);
+    background-image: radial-gradient(hsl(var(--violet) / 0.12) 1px, transparent 1px);
     background-size: 24px 24px;
   }
 
   .decorative-grid {
     background-image: 
-      linear-gradient(hsl(var(--orange) / 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--orange) / 0.04) 1px, transparent 1px);
+      linear-gradient(hsl(var(--violet) / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--violet) / 0.04) 1px, transparent 1px);
     background-size: 50px 50px;
   }
 
@@ -166,7 +183,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: hsl(var(--orange));
+    background: hsl(var(--violet));
   }
   .corner-dots::before { top: -3px; left: -3px; }
   .corner-dots::after { top: -3px; right: -3px; }
@@ -176,12 +193,12 @@
     background: hsl(var(--card) / 0.5);
   }
   .trait-card:hover {
-    border-color: hsl(var(--orange) / 0.5);
-    box-shadow: 0 0 20px -6px hsl(var(--orange) / 0.3);
+    border-color: hsl(var(--violet) / 0.5);
+    box-shadow: 0 0 20px -6px hsl(var(--violet) / 0.3);
   }
   .trait-card .dot {
     @apply absolute w-2 h-2 rounded-full;
-    background: hsl(var(--orange) / 0.6);
+    background: hsl(var(--violet) / 0.6);
   }
 
   .marquee-track {
@@ -217,8 +234,36 @@
     width: 2px;
     height: 2px;
     border-radius: 50%;
-    background: hsl(var(--orange) / 0.4);
+    background: hsl(var(--violet) / 0.4);
     animation: float-up 8s linear infinite;
+  }
+
+  /* Timeline connector */
+  .timeline-line {
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, hsl(var(--violet) / 0.4), hsl(var(--cyan) / 0.4), hsl(var(--pink) / 0.4));
+  }
+
+  .timeline-dot {
+    @apply absolute w-4 h-4 rounded-full border-2 border-background z-10;
+    left: 21px;
+  }
+
+  /* Certification ribbon */
+  .cert-ribbon {
+    @apply relative overflow-hidden rounded-2xl transition-all duration-500;
+    background: linear-gradient(145deg, hsl(var(--card)), hsl(var(--card) / 0.8));
+  }
+  .cert-ribbon::before {
+    content: '';
+    @apply absolute top-0 left-0 w-full h-1 rounded-t-2xl;
+  }
+  .cert-ribbon:hover {
+    transform: translateY(-4px);
   }
 }
 
@@ -241,14 +286,19 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 5px hsl(var(--orange) / 0.3); }
-  50% { box-shadow: 0 0 20px hsl(var(--orange) / 0.6), 0 0 40px hsl(var(--orange) / 0.2); }
+  0%, 100% { box-shadow: 0 0 5px hsl(var(--violet) / 0.3); }
+  50% { box-shadow: 0 0 20px hsl(var(--violet) / 0.6), 0 0 40px hsl(var(--violet) / 0.2); }
 }
 
 @keyframes gradient-shift {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmer-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .animate-blob {
@@ -270,4 +320,8 @@
 .animate-gradient-shift {
   background-size: 200% 200%;
   animation: gradient-shift 4s ease infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer-slide 3s ease-in-out infinite;
 }
