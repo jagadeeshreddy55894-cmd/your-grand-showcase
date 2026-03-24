@@ -6,7 +6,6 @@ const achievements = [
     icon: Trophy,
     title: "Hackathon Top 5 🏆",
     description: "4th position in a 32-hour institutional hackathon, building a creative and innovative website as a team.",
-    color: "orange",
     bg: "bg-orange/10",
     textColor: "text-orange",
     glowClass: "hover:glow-orange",
@@ -15,7 +14,6 @@ const achievements = [
     icon: Heart,
     title: "50+ Volunteer Hours 💛",
     description: "Dedicated time supporting elders at an old age home in collaboration with an NGO, providing companionship.",
-    color: "pink",
     bg: "bg-pink/10",
     textColor: "text-pink",
     glowClass: "hover:glow-pink",
@@ -24,7 +22,6 @@ const achievements = [
     icon: Code2,
     title: "50+ LeetCode 🔥",
     description: "Solved DSA problems on LeetCode, strengthening problem-solving and logical thinking skills.",
-    color: "lime",
     bg: "bg-lime/10",
     textColor: "text-lime",
     glowClass: "hover:glow-cyan",
@@ -34,10 +31,10 @@ const achievements = [
 ];
 
 const certificates = [
-  { name: "Industrial Training in ML", org: "Bharat Skillz", date: "Aug 2025", color: "violet" },
-  { name: "Cloud Computing", org: "NPTEL", date: "Apr 2025", color: "cyan" },
-  { name: "Java Programming", org: "Neo Platform", date: "May 2024", color: "pink" },
-  { name: "HTML & CSS", org: "freeCodeCamp", date: "Oct 2023", color: "orange", link: "https://www.freecodecamp.org/certification/" },
+  { name: "Industrial Training in ML", org: "Bharat Skillz", date: "Aug 2025", iconBg: "bg-violet/10", iconColor: "text-violet", linkColor: "text-violet hover:bg-violet/10" },
+  { name: "Cloud Computing", org: "NPTEL", date: "Apr 2025", iconBg: "bg-cyan/10", iconColor: "text-cyan", linkColor: "text-cyan hover:bg-cyan/10" },
+  { name: "Java Programming", org: "Neo Platform", date: "May 2024", iconBg: "bg-pink/10", iconColor: "text-pink", linkColor: "text-pink hover:bg-pink/10" },
+  { name: "HTML & CSS", org: "freeCodeCamp", date: "Oct 2023", iconBg: "bg-orange/10", iconColor: "text-orange", linkColor: "text-orange hover:bg-orange/10", link: "https://www.freecodecamp.org/certification/" },
 ];
 
 const AchievementsSection = () => {
@@ -60,7 +57,6 @@ const AchievementsSection = () => {
           <h2 className="text-4xl md:text-6xl font-display font-black text-gradient-warm">Achievements</h2>
         </motion.div>
 
-        {/* Achievement cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-20">
           {achievements.map((item, i) => (
             <motion.div
@@ -111,10 +107,10 @@ const AchievementsSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className={`glass-vibrant rounded-xl p-5 flex items-center gap-4 group hover:border-${cert.color}/30 transition-all duration-300`}
+              className="glass-vibrant rounded-xl p-5 flex items-center gap-4 group transition-all duration-300"
             >
-              <div className={`w-10 h-10 rounded-lg bg-${cert.color}/10 flex items-center justify-center shrink-0`}>
-                <Award className={`w-5 h-5 text-${cert.color}`} />
+              <div className={`w-10 h-10 rounded-lg ${cert.iconBg} flex items-center justify-center shrink-0`}>
+                <Award className={`w-5 h-5 ${cert.iconColor}`} />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="font-display font-semibold text-sm truncate">{cert.name}</p>
@@ -124,7 +120,7 @@ const AchievementsSection = () => {
                 href={cert.link || "#"}
                 target={cert.link ? "_blank" : undefined}
                 rel="noopener noreferrer"
-                className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-border text-xs font-semibold text-${cert.color} hover:bg-${cert.color}/10 transition-all shrink-0`}
+                className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-full border border-border text-xs font-semibold ${cert.linkColor} transition-all shrink-0`}
               >
                 View <ExternalLink className="w-3 h-3" />
               </a>

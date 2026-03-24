@@ -8,9 +8,10 @@ const education = [
     degree: "B.Tech — Computer Science & Engineering",
     detail: "CGPA: 7.1",
     period: "Aug 2023 — Present",
-    color: "violet",
     dotColor: "bg-violet",
     borderColor: "border-l-violet",
+    iconColor: "text-violet",
+    badgeBg: "bg-violet/10 text-violet",
   },
   {
     school: "Sri Chaitanya Junior College",
@@ -18,9 +19,10 @@ const education = [
     degree: "Intermediate",
     detail: "92%",
     period: "Jul 2021 — Apr 2023",
-    color: "cyan",
     dotColor: "bg-cyan",
     borderColor: "border-l-cyan",
+    iconColor: "text-cyan",
+    badgeBg: "bg-cyan/10 text-cyan",
   },
   {
     school: "Sri Chaitanya Techno School",
@@ -28,9 +30,10 @@ const education = [
     degree: "Matriculation",
     detail: "99%",
     period: "Jul 2020 — Mar 2021",
-    color: "pink",
     dotColor: "bg-pink",
     borderColor: "border-l-pink",
+    iconColor: "text-pink",
+    badgeBg: "bg-pink/10 text-pink",
   },
 ];
 
@@ -76,9 +79,9 @@ const EducationSection = () => {
                 </div>
               </div>
               <div className="flex items-center gap-3 mt-4">
-                <GraduationCap className={`w-5 h-5 text-${edu.color} shrink-0`} />
+                <GraduationCap className={`w-5 h-5 ${edu.iconColor} shrink-0`} />
                 <span className="text-foreground font-medium">{edu.degree}</span>
-                <span className={`px-3 py-1 rounded-full bg-${edu.color}/10 text-${edu.color} font-mono text-sm font-bold`}>{edu.detail}</span>
+                <span className={`px-3 py-1 rounded-full font-mono text-sm font-bold ${edu.badgeBg}`}>{edu.detail}</span>
               </div>
             </motion.div>
           ))}
