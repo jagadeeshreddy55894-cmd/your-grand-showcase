@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download, ChevronDown, Zap, Target, Brain, Users } from "lucide-react";
+import profileImg from "@/assets/profile.jpg";
 
 const traits = [
   { icon: Zap, title: "Fast Learner", subtitle: "Adapts quickly", color: "text-cyan" },
@@ -170,8 +171,8 @@ const HeroSection = () => {
               />
 
               {/* Inner circle with initials */}
-              <div className="absolute inset-8 rounded-full bg-card flex items-center justify-center">
-                <span className="text-6xl font-display font-black text-gradient-gold">JV</span>
+              <div className="absolute inset-8 rounded-full bg-card flex items-center justify-center overflow-hidden">
+                <img src={profileImg} alt="John Victor Chavala" className="w-full h-full object-cover" />
               </div>
 
               {/* Orbiting dots */}
