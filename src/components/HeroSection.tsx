@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download, ChevronDown, Zap, Target, Brain, Users } from "lucide-react";
+import profileImg from "@/assets/profile.jpg";
 
 const traits = [
   { icon: Zap, title: "Fast Learner", subtitle: "Adapts quickly", color: "text-cyan" },
