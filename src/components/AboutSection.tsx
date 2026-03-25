@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import { Sparkles, Code2, FlaskConical, Eye } from "lucide-react";
-import profileImg from "@/assets/profile.jpg";
-
 const highlights = [
   { icon: Code2, label: "Python & Scikit-learn", color: "text-cyan" },
   { icon: FlaskConical, label: "Feature Engineering", color: "text-pink" },
@@ -38,19 +36,29 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
             className="relative shrink-0"
           >
-            <div className="relative w-64 h-64 md:w-72 md:h-72">
+            <div className="relative w-64 h-64 md:w-72 md:h-72 flex items-center justify-center">
               <div
-                className="absolute -inset-1 rounded-2xl animate-gradient-shift opacity-60"
+                className="absolute inset-0 rounded-2xl animate-gradient-shift opacity-70"
                 style={{
                   background: 'conic-gradient(from 0deg, hsl(var(--violet)), hsl(var(--cyan)), hsl(var(--pink)), hsl(var(--lime)), hsl(var(--violet)))',
-                  filter: 'blur(8px)',
+                  filter: 'blur(30px)',
                 }}
               />
-              <img
-                src={profileImg}
-                alt="John Victor Chavala"
-                className="relative w-full h-full object-cover rounded-2xl border-2 border-border"
-              />
+              <div className="relative w-full h-full rounded-2xl border border-border/50 overflow-hidden"
+                style={{ background: 'linear-gradient(135deg, hsl(var(--violet) / 0.15), hsl(var(--card)), hsl(var(--cyan) / 0.1))' }}>
+                <div className="absolute inset-0 decorative-dots opacity-30" />
+                <div className="flex flex-col items-center justify-center h-full gap-3">
+                  <div className="w-16 h-16 rounded-full bg-gradient-gold flex items-center justify-center">
+                    <Sparkles className="w-8 h-8 text-background" />
+                  </div>
+                  <span className="font-display font-black text-3xl text-gradient-gold">ML</span>
+                  <span className="text-xs text-muted-foreground font-mono tracking-widest uppercase">Enthusiast</span>
+                </div>
+                {/* Floating orbs */}
+                <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-cyan/20 animate-pulse" />
+                <div className="absolute bottom-6 left-4 w-6 h-6 rounded-full bg-pink/20 animate-pulse" style={{ animationDelay: '1s' }} />
+                <div className="absolute top-1/2 right-8 w-4 h-4 rounded-full bg-lime/20 animate-pulse" style={{ animationDelay: '2s' }} />
+              </div>
             </div>
           </motion.div>
 
