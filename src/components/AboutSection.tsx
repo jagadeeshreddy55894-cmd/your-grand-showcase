@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import { Sparkles, Code2, FlaskConical, Eye } from "lucide-react";
-import profileImg from "@/assets/profile.jpg";
-
 const highlights = [
   { icon: Code2, label: "Python & Scikit-learn", color: "text-cyan" },
   { icon: FlaskConical, label: "Feature Engineering", color: "text-pink" },
