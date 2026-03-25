@@ -171,8 +171,8 @@ const HeroSection = () => {
               />
 
               {/* Inner circle with initials */}
-              <div className="absolute inset-8 rounded-full bg-card flex items-center justify-center">
-                <span className="text-6xl font-display font-black text-gradient-gold">JV</span>
+              <div className="absolute inset-8 rounded-full bg-card flex items-center justify-center overflow-hidden">
+                <img src={profileImg} alt="John Victor Chavala" className="w-full h-full object-cover" />
               </div>
 
               {/* Orbiting dots */}
